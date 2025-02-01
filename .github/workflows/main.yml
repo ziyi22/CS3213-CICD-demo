@@ -1,0 +1,47 @@
+name: ci-demo
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  helloworld:
+    name: Print Hello World
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: hello
+        run: echo "Hello World"
+  
+  checkprefix:
+    name: Check Prefix
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: check pref
+        run: |
+          if ls *.py 2>/dev/null | grep -qv '^CS3213'; then\
+            echo "All .py files should begin with CS3213"
+            exit 1
+          fi
+
+  checkdocumentation:
+    name: 
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - name: Check Documentation
+        run: python CS3213_check_doc.py
