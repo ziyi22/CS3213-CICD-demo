@@ -1,4 +1,26 @@
 # CS3213-CICD-demo
-This repo is a demonstration of using GitHub Actions for CI/CD.
+This repo is a demonstration of using GitHub Actions for CI/CD. Designed as part of NUS CS3213.
 
-This repo is part of NUS CS3213.
+## Setup
+Make a fork of this repo on GitHub. Enable GitHub Action on forked repo.
+DO NOT fork it into the course GitHub organization as we have disabled GitHub Action there.
+
+## Demo: Hello World
+`.github/workflows/main.yml` comes with a simple job `helloworld` that prints "Hello World".
+Take a look at the file to understand how it is configured, then navigate to the `Actions` tab on GitHub webpage to see how it runs.
+
+
+## Demo: Check Prefix
+Uncomment the block for job `checkprefix` in `.github/workflows/main.yml`.
+This job will check if the filename of all the `.py` files in the root directory begins with "CS3213".
+Push the commit to GitHub, check the `Actions` tab to see that the job has failed (since `check_doc.py` violates this rule).
+
+Rename `check_doc.py` to `CS3213_check_doc.py`. Push the change to GitHub, verify that the job now succeeds.
+
+## Exercise: Check Documentation
+Add a job in `.github/workflows/main.yml` to check if there is a file `Documentation.md` in the root directory and verify that the file is not empty.
+A template has been provided to you in `.github/workflows/main.yml`.
+The actual check logic is provided in `CS3213_check_doc.py` (previously `check_doc.py`), simply execute that in your workflow.
+
+## A Real-World Example
+`.github/workflows/release.yml.txt` is a real world CD workflow from SQLancer.
