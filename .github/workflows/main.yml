@@ -57,4 +57,4 @@ jobs:
           python-version: '3.10'
       # Run your test
       - name: Check Documentation
-        run: #TODO: Add your test here (simply call the python file we provided)
+        run: CS3213_check_doc.py
