@@ -23,24 +23,24 @@ jobs:
         # The CLI command(s) for this job
         run: echo "Hello World"
   
-  # # Demo: This job checks whether all .py files in the root directory
-  # # begins with CS3213
-  # checkprefix:
-  #   name: Check Prefix
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     # This is a marketplace workflow to checkout the current branch
-  #     # Without this, you will be working with an empty directory
-  #     - uses: actions/checkout@v3
-  #       with:
-  #         fetch-depth: 0
-  #     # Below is the actual check
-  #     - name: check pref
-  #       run: |
-  #         if ls *.py 2>/dev/null | grep -qv '^CS3213'; then\
-  #           echo "All .py files should begin with CS3213"
-  #           exit 1
-  #         fi
+  # Demo: This job checks whether all .py files in the root directory
+  # begins with CS3213
+  checkprefix:
+    name: Check Prefix
+    runs-on: ubuntu-latest
+    steps:
+      # This is a marketplace workflow to checkout the current branch
+      # Without this, you will be working with an empty directory
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      # Below is the actual check
+      - name: check pref
+        run: |
+          if ls *.py 2>/dev/null | grep -qv '^CS3213'; then\
+            echo "All .py files should begin with CS3213"
+            exit 1
+           fi
 
   # checkdocumentation:
   #   name: Check Documentation
